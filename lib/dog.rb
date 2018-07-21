@@ -56,7 +56,7 @@ class Dog
     else
       dog = self.create(name: name, breed: breed)
     end
-    dog 
+    dog
   end
 
   def self.new_from_db(row)
@@ -70,7 +70,8 @@ class Dog
   end
 
   def update
-
+    sql = "UPDATE dogs SET name = ?, breed = ? WHERE id = ?"
+    DB[:conn].execute(sql, self.name, self.breed, self.id)
   end
 
 end
